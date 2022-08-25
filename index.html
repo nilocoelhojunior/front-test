@@ -15,7 +15,22 @@
 
         socket.onopen = () => {
             console.log("Successfully Connected");
-            socket.send("{type:'start-matchmaking',bet:50}")
+            startMatchmaking = {
+              kind: "start-matchmaking",
+              payload: {
+                bet: 50, 
+                tazoId: "Klv131314141", 
+                userAddress: "klv1234rfvghj", 
+                betHash: "asfa135qtegsdg235qrdfsd"
+              }
+            }
+            signInUser = {
+              kind: "sign-in-user",
+              payload: {
+                address: 'klv123'
+              }
+            }
+            socket.send(JSON.stringify(signInUser))
         };
         
         socket.onclose = event => {
